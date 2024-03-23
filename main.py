@@ -49,6 +49,5 @@ def menuInicial():
             else:
                 print("Esta opcion no existe")
             
-
         
 menuInicial()
