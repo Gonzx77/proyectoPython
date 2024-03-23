@@ -1,34 +1,34 @@
 import requests
 
-def Cliente():
+def Activos():
     peticion = requests.get("http://154.38.171.54:5501/activos")
     data = peticion.json()
     return data
-def DetallePed():
+def Marcas():
     peticion = requests.get("http://154.38.171.54:5501/marcas")
     data = peticion.json()
     return data
-def Empleado():
+def CategoriaActivos():
     peticion = requests.get("http://154.38.171.54:5501/categoriaActivos")
     data = peticion.json()
     return data
-def Gama():
+def TipoMovActivos():
     peticion = requests.get("http://154.38.171.54:5501/tipoMovActivos")
     data = peticion.json()
     return data
-def Oficina():
+def Estados():
     peticion = requests.get("http://154.38.171.54:5501/estados")
     data = peticion.json()
     return data
-def Pago():
+def TipoActivos():
     peticion = requests.get("http://154.38.171.54:5501/tipoActivos")
     data = peticion.json()
     return data
-def Pedido():
+def Personas():
     peticion = requests.get("http://154.38.171.54:5501/personas")
     data = peticion.json()
     return data
-def Producto():
+def Zonas():
     peticion = requests.get("http://154.38.171.54:5501/zonas")
     data = peticion.json()
     return data
