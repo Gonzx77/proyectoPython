@@ -14,18 +14,18 @@ def menuInicial():
             
             ----------- SISTEMA G&C DE INVENTARIO CAMPUSLANDS -----------
 
-                    1. Activos
-                    2. Personal
-                    3. Zonas
-                    4. Asignacion de Activos
-                    5. Reportes
-                    6. Movimientos de Activos
+                    1. ACTIVOS
+                    2. PERSONAL
+                    3. ZONAS
+                    4. ASIGNACION DE ACTIVOS
+                    5. REPORTES
+                    6. MOVIMIENTO DE ACTIVOS
                     
                     0. Salir
             """)
         
         while True:
-            op = input("Ingrese opcion: ")
+            op = input("   Ingrese opcion: ")
             if op == "1":
                 activos.menu()
                 break

@@ -36,10 +36,20 @@ def Zonas():
 
 
 def TelefonosPersonas():
-    personas = requests.get("http://154.38.171.54:5501/personas")
-    personas = personas.json()
+    peticion = requests.get("http://154.38.171.54:5501/personas")
+    peticion = peticion.json()
     telefonos = []
-    for persona in personas:
-        telefonos_persona = persona.get("Telefonos", [])
+    for val in peticion:
+        telefonos_persona = val.get("Telefonos", [])
         telefonos.extend(telefonos_persona)
     return telefonos
+
+
+
+def ListaMarcas():
+    peticion = requests.get("http://154.38.171.54:5501/marcas")
+    peticion = peticion.json()
+    data = []
+    for val in peticion:
+        data.append(val.get("id"))
+    return data
