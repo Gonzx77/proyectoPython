@@ -9,27 +9,31 @@ patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
 
 def Activo():
     os.system("clear")
-    newActivo = {}
+    newPersona = {}
+    
+    uid = data.UID_Activos()
+    uid = int(uid)
+    newPersona["id"] = str(uid + 1)
     
     print("NUEVO ACTIVO \n")
     
     while True:
         try:
-            newActivo["NroItem"] = int(input("   Ingrese numero de item del activo: "))
+            newPersona["NroItem"] = int(input("   Ingrese numero de item del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newActivo["CodTransaccion"] = int(input("   Ingrese codigo de transaccion del activo: "))
+            newPersona["CodTransaccion"] = int(input("   Ingrese codigo de transaccion del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newActivo["NroSerial"] = input("   Ingrese numero serial del activo: ")
+            newPersona["NroSerial"] = input("   Ingrese numero serial del activo: ")
             print("-Guardado")
             break
         except ValueError:
@@ -39,7 +43,7 @@ def Activo():
             r = input("   Ingrese codigo campus del activo (AAA000): ")
             r = r.upper()
             if patronCodCampus.match(r):
-                newActivo["CodCampus"] = r
+                newPersona["CodCampus"] = r
                 print("-Guardado")
                 break
             else:
@@ -48,76 +52,143 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["NroFormulario"] = int(input("   Ingrese numero formulario del activo: "))
+            newPersona["NroFormulario"] = int(input("   Ingrese numero formulario del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newActivo["Nombre"] = input("   Ingrese nombre del activo: ")
+            newPersona["Nombre"] = input("   Ingrese nombre del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["Proveedor"] = input("   Ingrese proveedor del activo: ")
+            newPersona["Proveedor"] = input("   Ingrese proveedor del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["EmpresaResponsable"] = input("   Ingrese empresa responsable del activo: ")
+            newPersona["EmpresaResponsable"] = input("   Ingrese empresa responsable del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["idMarca"] = input("   Ingrese id marca del activo: ")
+            newPersona["idMarca"] = input("   Ingrese id marca del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["idCategoria"] = input("   Ingrese id categoria del activo: ")
+            newPersona["idCategoria"] = input("   Ingrese id categoria del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["idTipo"] = input("   Ingrese id tipo del activo: ")
+            newPersona["idTipo"] = input("   Ingrese id tipo del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newActivo["ValorUnitario"] = input("   Ingrese valor unitario del activo: ")
+            newPersona["ValorUnitario"] = input("   Ingrese valor unitario del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newActivo["idEstado"] = input("   Ingrese id estado del activo: ")
-            print("-Guardado")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-            
-    uid = data.UID_Activos()
-    uid = int(uid)
-    newActivo["id"] = str(uid + 1)
     
-    newActivo["historialActivos"] = []
-    newActivo["asignaciones"] = []
+    
+    newPersona["idEstado"] = "0"
+    newPersona["historialActivos"] = []
+    newPersona["asignaciones"] = []
 
-    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newActivo))
+    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newPersona))
     res = peticion.json()
-    res["Mensaje"] = "Pago Guardado"
+    res["Mensaje"] = "Activo Guardado"
+    return [res]
+
+
+
+def Personas():
+    os.system("clear")
+    newPersona = {}
+    
+    
+    uid = data.UID_Personas()
+    uid = int(uid)
+    id = str(uid + 1)
+    newPersona["id"] = id
+    
+    
+    print("NUEVO ACTIVO \n")
+    
+    while True:
+        try:
+            r = int(input("   Ingrese identificacion de la persona: "))
+            newPersona["nroId (CC, Nit)"] = str(r)
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+    while True:
+        try:
+            newPersona["Nombre"] = input("   Ingrese nombre de la persona: ")
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("   Ingrese email de la persona (example@example.com): ")
+            if "@" in r and r.endswith(".com"):
+                newPersona["Email"] = r
+                print("-Guardado")
+                break
+            else:
+                print("Error, debe seguir el formato")
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            n1 = int(input("   Ingrese numero de telefono del movil de la persona: "))
+            n1 = str(n1)
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+    while True:
+        try:
+            n2 = int(input("   Ingrese numero de telefono de la casa de la persona: "))
+            n2 = str(n2)
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+        
+    newPersona["Telefonos"] = [
+        {
+            "movil": {
+            "id": id,
+            "num": n1
+            },
+            "casa": {
+            "id": id,
+            "num": n2
+            }
+        }
+    ]
+    
+    peticion = requests.post("http://154.38.171.54:5502/personas", data=json.dumps(newPersona))
+    res = peticion.json()
+    res["Mensaje"] = "Persona Guardada"
     return [res]

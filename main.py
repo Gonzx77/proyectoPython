@@ -1,6 +1,6 @@
 import os
 import menus.activos as activos
-import menus.personal as personal
+import menus.personas as personas
 import menus.zonas as zonas
 import menus.asginacionActivos as asigActivos
 import menus.reportes as reportes
@@ -30,7 +30,7 @@ def menuInicial():
                 activos.menu()
                 break
             elif op == "2":
-                personal.menu()
+                personas.menu()
                 break
             elif op == "3":
                 zonas.menu()

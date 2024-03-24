@@ -19,7 +19,7 @@ def menu():
         while True:
             op = input("   Ingrese opcion: ")
             if op == "1":
-                post.Activo()
+                print(post.Activo())
                 break
             elif op == "2":
                 #personal.menu()
