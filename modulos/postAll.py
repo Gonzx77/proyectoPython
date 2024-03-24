@@ -3,6 +3,8 @@ import json
 import re
 import os
 
+import modulos.getAllData as data
+
 patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
 
 def Activo():
@@ -53,7 +55,7 @@ def Activo():
             print("Error, solo valores enteros !")
     while True:
         try:
-            newActivo["Nombre"] = input("   Ingrese numero formulario del activo: ")
+            newActivo["Nombre"] = input("   Ingrese nombre del activo: ")
             print("-Guardado")
             break
         except ValueError:
@@ -107,6 +109,13 @@ def Activo():
             break
         except ValueError:
             print("Error, caracteres invalidos !")
+            
+    uid = data.UID_Activos()
+    uid = int(uid)
+    newActivo["id"] = str(uid + 1)
+    
+    newActivo["historialActivos"] = []
+    newActivo["asignaciones"] = []
 
     peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newActivo))
     res = peticion.json()

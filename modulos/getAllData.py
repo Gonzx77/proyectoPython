@@ -1,5 +1,6 @@
 import requests
 
+# D A T A 
 def Activos():
     peticion = requests.get("http://154.38.171.54:5501/activos")
     data = peticion.json()
@@ -34,7 +35,7 @@ def Zonas():
     return data
 
 
-
+# T E L E F O N O S
 def TelefonosPersonas():
     peticion = requests.get("http://154.38.171.54:5501/personas")
     peticion = peticion.json()
@@ -45,7 +46,7 @@ def TelefonosPersonas():
     return telefonos
 
 
-
+# L I S T A S
 def ListaMarcas():
     peticion = requests.get("http://154.38.171.54:5501/marcas")
     peticion = peticion.json()
@@ -53,3 +54,24 @@ def ListaMarcas():
     for val in peticion:
         data.append(val.get("id"))
     return data
+
+
+# U L T I M O _ I D
+def UID_Activos():
+    peticion = requests.get("http://154.38.171.54:5501/activos")
+    data = peticion.json()
+    for val in data:
+        result = val.get("id")
+    return result
+def UID_Personas():
+    peticion = requests.get("http://154.38.171.54:5501/personas")
+    data = peticion.json()
+    for val in data:
+        result = val.get("id")
+    return result
+def UID_Zoas():
+    peticion = requests.get("http://154.38.171.54:5501/zonas")
+    data = peticion.json()
+    for val in data:
+        result = val.get("id")
+    return result
