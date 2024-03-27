@@ -1,6 +1,7 @@
 import os
 import modulos.postAll as post
 import modulos.removeAll as remove
+import modulos.editAll as editAll
 
 def menu():
     while True:
@@ -23,7 +24,7 @@ def menu():
                 print(post.Activo())
                 break
             elif op == "2":
-                #print(remove.Activo())
+                print(editAll.Activo())
                 break
             elif op == "3":
                 print(remove.Activo())

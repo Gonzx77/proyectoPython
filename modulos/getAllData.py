@@ -58,6 +58,28 @@ def ListMarcas():
             val.get("Nombre")
         ])
     return result
+def ListCategorias():
+    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append([
+            val.get("id"),
+            val.get("Nombre")
+        ])
+    return result
+def ListTipoActivos():
+    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append([
+            val.get("id"),
+            val.get("Nombre")
+        ])
+    return result
 
 
 
@@ -85,6 +107,20 @@ def ListID_Zonas():
     return result
 def ListID_Marcas():
     peticion = requests.get("http://154.38.171.54:5502/marcas")
+    data = peticion.json()
+    result = []
+    for val in data:
+        result.append(val.get("id"))
+    return result
+def ListID_Categorias():
+    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    data = peticion.json()
+    result = []
+    for val in data:
+        result.append(val.get("id"))
+    return result
+def ListID_TipoActivos():
+    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
     data = peticion.json()
     result = []
     for val in data:

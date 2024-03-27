@@ -50,3 +50,4 @@ def Activo():
     res = peticion.json()
     
     print("Activo dado de baja correctamente \n")
+    input("   Presione ENTER para continuar...")

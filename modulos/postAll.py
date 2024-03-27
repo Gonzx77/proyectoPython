@@ -78,7 +78,7 @@ def Activo():
     while True:
         try:
             print(tabulate(data.ListMarcas(), headers=["ID", "Marca"], tablefmt="github"))
-            r = input("   Ingrese id marca del activo: ")
+            r = input("\n   Ingrese id marca del activo: ")
             if r in data.ListID_Marcas():
                 newPersona["idMarca"] = r
                 print("-Guardado")
@@ -89,16 +89,26 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["idCategoria"] = input("   Ingrese id categoria del activo: ")
-            print("-Guardado")
-            break
+            print(tabulate(data.ListCategorias(), headers=["ID", "Categoria"], tablefmt="github"))
+            r = input("\n   Ingrese id categoria del activo: ")
+            if r in data.ListID_Categorias():
+                newPersona["idCategoria"] = r
+                print("-Guardado")
+                break
+            else:
+                print("Error, este ID de categoria no existe !")
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["idTipo"] = input("   Ingrese id tipo del activo: ")
-            print("-Guardado")
-            break
+            print(tabulate(data.ListTipoActivos(), headers=["ID", "Tipo"], tablefmt="github"))
+            r = input("\n   Ingrese id tipo del activo: ")
+            if r in data.ListID_TipoActivos():
+                newPersona["idTipo"] = r
+                print("-Guardado")
+                break
+            else:
+                print("Error, este ID de tipo no existe !")
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
@@ -117,6 +127,7 @@ def Activo():
     peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newPersona))
     res = peticion.json()
     print("Persona guardada correctamente \n")
+    input("   Presione ENTER para continuar...")
 
 
 
@@ -197,3 +208,4 @@ def Personas():
     peticion = requests.post("http://154.38.171.54:5502/personas", data=json.dumps(newPersona))
     res = peticion.json()
     print("Persona guardada correctamente \n")
+    input("   Presione ENTER para continuar...")
