@@ -41,9 +41,12 @@ def Activo():
     activoH.append({
         "NroId": "1",
         "Fecha": fecha,
-        "tipoMov": "1",
+        "tipoMov": "2",
         "idRespMov": person
     })
     
     activo["idEstado"] = "2"
-    requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
+    peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
+    res = peticion.json()
+    
+    print("Activo dado de baja correctamente \n")

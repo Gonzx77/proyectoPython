@@ -20,6 +20,7 @@ def menu():
             op = input("Ingrese opcion: ")
             if op == "1":
                 print(post.Personas())
+                input("Presiona ENTER para continuar...")
                 break
             elif op == "2":
                 #personal.menu()

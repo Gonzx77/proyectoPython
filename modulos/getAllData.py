@@ -47,18 +47,21 @@ def TelefonosPersonas():
 
 
 # L I S T A S
-def ListaMarcas():
+def ListMarcas():
     peticion = requests.get("http://154.38.171.54:5502/marcas")
-    peticion = peticion.json()
-    data = []
-    for val in peticion:
-        data.append(val.get("id"))
-    return data
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append([
+            val.get("id"),
+            val.get("Nombre")
+        ])
+    return result
 
 
 
 # L I S T _ I D
-
 def ListID_Activos():
     peticion = requests.get("http://154.38.171.54:5502/activos")
     data = peticion.json()
@@ -75,6 +78,13 @@ def ListID_Personas():
     return result
 def ListID_Zonas():
     peticion = requests.get("http://154.38.171.54:5502/zonas")
+    data = peticion.json()
+    result = []
+    for val in data:
+        result.append(val.get("id"))
+    return result
+def ListID_Marcas():
+    peticion = requests.get("http://154.38.171.54:5502/marcas")
     data = peticion.json()
     result = []
     for val in data:

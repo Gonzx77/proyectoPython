@@ -3,6 +3,7 @@ import json
 import re
 import os
 
+from tabulate import tabulate
 import modulos.getAllData as data
 
 patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
@@ -76,9 +77,14 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["idMarca"] = input("   Ingrese id marca del activo: ")
-            print("-Guardado")
-            break
+            print(tabulate(data.ListMarcas(), headers=["ID", "Marca"], tablefmt="github"))
+            r = input("   Ingrese id marca del activo: ")
+            if r in data.ListID_Marcas():
+                newPersona["idMarca"] = r
+                print("-Guardado")
+                break
+            else:
+                print("Eerror, este ID de marca no existe !")
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
@@ -110,8 +116,7 @@ def Activo():
 
     peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newPersona))
     res = peticion.json()
-    res["Mensaje"] = "Activo Guardado"
-    return [res]
+    print("Persona guardada correctamente \n")
 
 
 
@@ -121,6 +126,18 @@ def Personas():
     
     print("NUEVO ACTIVO \n")
     
+    while True:
+        try:
+            id = input("   Ingrese ID de la persona (4 caracteres): ")
+            id = id.lower()
+            if len(id) == 4:
+                newPersona["id"] = str(id)
+                print("-Guardado")
+                break
+            else:
+                print("Error, debe incluir 4 caracteres !")
+        except ValueError:
+            print("Error, caracteres invalidos !")
     while True:
         try:
             r = int(input("   Ingrese identificacion de la persona: "))
@@ -179,5 +196,4 @@ def Personas():
     
     peticion = requests.post("http://154.38.171.54:5502/personas", data=json.dumps(newPersona))
     res = peticion.json()
-    res["Mensaje"] = "Persona Guardada"
-    return [res]
+    print("Persona guardada correctamente \n")
