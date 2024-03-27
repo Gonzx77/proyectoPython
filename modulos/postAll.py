@@ -11,10 +11,6 @@ def Activo():
     os.system("clear")
     newPersona = {}
     
-    uid = data.UID_Activos()
-    uid = int(uid)
-    newPersona["id"] = str(uid + 1)
-    
     print("NUEVO ACTIVO \n")
     
     while True:
@@ -122,13 +118,6 @@ def Activo():
 def Personas():
     os.system("clear")
     newPersona = {}
-    
-    
-    uid = data.UID_Personas()
-    uid = int(uid)
-    id = str(uid + 1)
-    newPersona["id"] = id
-    
     
     print("NUEVO ACTIVO \n")
     

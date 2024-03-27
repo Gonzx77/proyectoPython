@@ -1,5 +1,6 @@
 import os
 import modulos.postAll as post
+import modulos.removeAll as remove
 
 def menu():
     while True:
@@ -22,10 +23,10 @@ def menu():
                 print(post.Activo())
                 break
             elif op == "2":
-                #personal.menu()
+                #print(remove.Activo())
                 break
             elif op == "3":
-                #zonas.menu()
+                print(remove.Activo())
                 break
             elif op == "4":
                 #asigActivos.menu()
