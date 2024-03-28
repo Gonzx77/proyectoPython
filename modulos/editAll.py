@@ -10,11 +10,11 @@ patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
 
 def Activo():
     while True:
-        id = input("   Ingrese ID del activo a editar: ")
+        id = input("   Ingrese ID del Activo a editar: ")
         if id in data.ListID_Activos():
             break
         else:
-            print("Error, este ID de activo no existe !")
+            print("Error, este ID de Activo no existe !")
         
         
     activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
@@ -238,7 +238,7 @@ def Activo():
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
-        os.system("clear")
+        
         try:
             print(tabulate(data.ListEstados(), headers=["ID", "Estado"], tablefmt="github"))
             r = input("\n   Ingrese nuevo idEstado: ").strip()
@@ -263,4 +263,128 @@ def Activo():
     peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
     res = peticion.json()
     print("Activo modificado correctamente")
-    input("   Presione ENTER para continuar...")
+    input("\n   Presione ENTER para continuar...")
+    
+def Persona():
+    while True:
+        id = input("   Ingrese ID de Persona a editar: ")
+        if id in data.ListID_Personas():
+            break
+        else:
+            print("Error, este ID de Persona no existe !")
+        
+        
+    persona = requests.get(f"http://154.38.171.54:5502/personas/{id}")
+    persona = persona.json()
+    
+    def tabla():
+        result = []
+        for (key, value) in persona.items():
+            if isinstance(value, dict):
+                value_str = json.dumps(value)
+            else:
+                value_str = str(value)
+            result.append([
+                key,
+                value_str
+            ])
+        return result
+    
+    print("EDITANDO PERSONA (deje en blanco para mantener) \n")
+    
+    while True:
+        os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
+        try:
+            r = input("   Ingrese nuevo nroId (CC, Nit): ").strip()
+            if r:
+                r = int(r)
+                persona["nroId (CC, Nit)"] = str(r)
+                print("-Modificado")
+                input("Presione ENTER para continuar...")
+                break
+            else:
+                print("-Conservado")
+                input("Presione ENTER para continuar...")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
+        try:
+            r = input("   Ingrese nuevo Nombre: ").strip()
+            if r:
+                persona["Nombre"] = r
+                print("-Modificado")
+                input("Presione ENTER para continuar...")
+                break
+            else:
+                print("-Conservado")
+                input("Presione ENTER para continuar...")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
+        try:
+            r = input("   Ingrese nuevo Email (example@example.com): ").strip()
+            if r:
+                if "@" in r and r.endswith(".com"):
+                    persona["Email"] = r
+                    print("-Modificado")
+                    input("Presione ENTER para continuar...")
+                    break
+                else:
+                    print("Error, debe seguir el formato !")
+            else:
+                print("-Conservado")
+                input("Presione ENTER para continuar...")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        os.system("clear")
+        try:
+            n1 = input("   Ingrese nuevo numero de telefono del movil de la persona: ").strip()
+            if n1:
+                n1 = int(n1)
+                print("-Modificado")
+                break
+            else:
+                print("Este valor no puede estar vacio !")
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+    while True:
+        os.system("clear")
+        try:
+            n2 = input("   Ingrese nuevo numero de telefono de la casa de la persona: ").strip()
+            if n2:
+                n2 = int(n2)
+                print("-Guardado")
+                break
+            else:
+                print("Este valor no puede estar vacio !")
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+        
+    persona["Telefonos"] = [
+        {
+            "movil": {
+            "id": id,
+            "num": str(n1)
+            },
+            "casa": {
+            "id": id,
+            "num": str(n2)
+            }
+        }
+    ]
+
+
+
+    peticion = requests.put(f"http://154.38.171.54:5502/personas/{id}", json=persona)
+    res = peticion.json()
+    print("Persona modificada correctamente")
+    input("\n   Presione ENTER para continuar...")

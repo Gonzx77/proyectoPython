@@ -129,9 +129,7 @@ def Activo():
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
 
-
-
-def Personas():
+def Persona():
     os.system("clear")
     newPersona = {}
     

@@ -1,12 +1,14 @@
 import os
 import modulos.postAll as post
+import modulos.editAll as edit
+import modulos.removeAll as remove
 
 def menu():
     while True:
         os.system("clear")
         print(f"""
             
-            ----------- MENU - PERSONAL -----------
+            ----------- MENU - PERSONAS -----------
 
                     1. AGREGAR
                     2. EDITAR
@@ -19,14 +21,13 @@ def menu():
         while True:
             op = input("Ingrese opcion: ")
             if op == "1":
-                print(post.Personas())
-                input("Presiona ENTER para continuar...")
+                print(post.Persona())
                 break
             elif op == "2":
-                #personal.menu()
+                print(edit.Persona())
                 break
             elif op == "3":
-                #zonas.menu()
+                print(remove.Persona())
                 break
             elif op == "4":
                 #asigActivos.menu()

@@ -154,3 +154,13 @@ def ListID_Estados():
     for val in data:
         result.append(val.get("id"))
     return result
+
+
+# L I S T A _ A S I G N A C I O N E S
+def ListID_ActivosAsignacion():
+    peticion = requests.get("http://154.38.171.54:5502/activos")
+    data = peticion.json()
+    result = []
+    for val in data:
+        result.append(val.get("id"))
+    return result
