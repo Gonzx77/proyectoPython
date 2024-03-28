@@ -10,27 +10,27 @@ patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
 
 def Activo():
     os.system("clear")
-    newPersona = {}
+    newActivo = {}
     
     print("NUEVO ACTIVO \n")
     
     while True:
         try:
-            newPersona["NroItem"] = int(input("   Ingrese numero de item del activo: "))
+            newActivo["NroItem"] = int(input("   Ingrese numero de item del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newPersona["CodTransaccion"] = int(input("   Ingrese codigo de transaccion del activo: "))
+            newActivo["CodTransaccion"] = int(input("   Ingrese codigo de transaccion del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newPersona["NroSerial"] = input("   Ingrese numero serial del activo: ")
+            newActivo["NroSerial"] = input("   Ingrese numero serial del activo: ")
             print("-Guardado")
             break
         except ValueError:
@@ -40,7 +40,7 @@ def Activo():
             r = input("   Ingrese codigo campus del activo (AAA000): ")
             r = r.upper()
             if patronCodCampus.match(r):
-                newPersona["CodCampus"] = r
+                newActivo["CodCampus"] = r
                 print("-Guardado")
                 break
             else:
@@ -49,28 +49,28 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["NroFormulario"] = int(input("   Ingrese numero formulario del activo: "))
+            newActivo["NroFormulario"] = int(input("   Ingrese numero formulario del activo: "))
             print("-Guardado")
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newPersona["Nombre"] = input("   Ingrese nombre del activo: ")
+            newActivo["Nombre"] = input("   Ingrese nombre del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["Proveedor"] = input("   Ingrese proveedor del activo: ")
+            newActivo["Proveedor"] = input("   Ingrese proveedor del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["EmpresaResponsable"] = input("   Ingrese empresa responsable del activo: ")
+            newActivo["EmpresaResponsable"] = input("   Ingrese empresa responsable del activo: ")
             print("-Guardado")
             break
         except ValueError:
@@ -80,7 +80,7 @@ def Activo():
             print(tabulate(data.ListMarcas(), headers=["ID", "Marca"], tablefmt="github"))
             r = input("\n   Ingrese id marca del activo: ")
             if r in data.ListID_Marcas():
-                newPersona["idMarca"] = r
+                newActivo["idMarca"] = r
                 print("-Guardado")
                 break
             else:
@@ -92,7 +92,7 @@ def Activo():
             print(tabulate(data.ListCategorias(), headers=["ID", "Categoria"], tablefmt="github"))
             r = input("\n   Ingrese id categoria del activo: ")
             if r in data.ListID_Categorias():
-                newPersona["idCategoria"] = r
+                newActivo["idCategoria"] = r
                 print("-Guardado")
                 break
             else:
@@ -104,7 +104,7 @@ def Activo():
             print(tabulate(data.ListTipoActivos(), headers=["ID", "Tipo"], tablefmt="github"))
             r = input("\n   Ingrese id tipo del activo: ")
             if r in data.ListID_TipoActivos():
-                newPersona["idTipo"] = r
+                newActivo["idTipo"] = r
                 print("-Guardado")
                 break
             else:
@@ -113,18 +113,18 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPersona["ValorUnitario"] = input("   Ingrese valor unitario del activo: ")
+            newActivo["ValorUnitario"] = input("   Ingrese valor unitario del activo: ")
             print("-Guardado")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     
     
-    newPersona["idEstado"] = "0"
-    newPersona["historialActivos"] = []
-    newPersona["asignaciones"] = []
+    newActivo["idEstado"] = "0"
+    newActivo["historialActivos"] = []
+    newActivo["asignaciones"] = []
 
-    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newPersona))
+    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newActivo))
     res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")

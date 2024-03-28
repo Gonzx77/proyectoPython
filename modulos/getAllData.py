@@ -80,6 +80,17 @@ def ListTipoActivos():
             val.get("Nombre")
         ])
     return result
+def ListEstados():
+    peticion = requests.get("http://154.38.171.54:5502/estados")
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append([
+            val.get("id"),
+            val.get("Nombre")
+        ])
+    return result
 
 
 
@@ -121,6 +132,13 @@ def ListID_Categorias():
     return result
 def ListID_TipoActivos():
     peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    data = peticion.json()
+    result = []
+    for val in data:
+        result.append(val.get("id"))
+    return result
+def ListID_Estados():
+    peticion = requests.get("http://154.38.171.54:5502/estados")
     data = peticion.json()
     result = []
     for val in data:
