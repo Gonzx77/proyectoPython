@@ -6,7 +6,7 @@ def menu():
         os.system("clear")
         print(f"""
             
-            ----------- MENU PERSONAL -----------
+            ----------- MENU - PERSONAL -----------
 
                     1. AGREGAR
                     2. EDITAR

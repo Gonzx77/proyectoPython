@@ -5,7 +5,7 @@ def menu():
         os.system("clear")
         print(f"""
             
-            ----------- MENU REPORTES -----------
+            ----------- MENU - REPORTES -----------
 
                     1. LISTAR TODOS LOS ACTIVOS
                     2. LISTAR ACTIVOS POR CATEGORIA

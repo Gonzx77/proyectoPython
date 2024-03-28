@@ -2,13 +2,14 @@ import os
 import modulos.postAll as post
 import modulos.removeAll as remove
 import modulos.editAll as editAll
+import menus.buscar.Bactivos as buscarActivos
 
 def menu():
     while True:
         os.system("clear")
         print(f"""
             
-            ----------- MENU ACTIVOS -----------
+            ----------- MENU - ACTIVOS -----------
             
                     1. AGREGAR
                     2. EDITAR
@@ -30,7 +31,7 @@ def menu():
                 print(remove.Activo())
                 break
             elif op == "4":
-                #asigActivos.menu()
+                buscarActivos.menu()
                 break
             elif op == "0":
                 break

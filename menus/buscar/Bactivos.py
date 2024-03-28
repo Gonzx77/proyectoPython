@@ -1,26 +1,26 @@
 import os
+import modulos.getActivos as gActivos
 
 def menu():
     while True:
         os.system("clear")
         print(f"""
             
-            ----------- MENU - ASIGNACION ACTIVOS -----------
+            ----------- MENU - BUSCAR ACTIVOS -----------
+            
+                    1. Buscar Activo por ID
+                    2. Buscaar Activo por Categoria
                     
-                    1. CREAR ASIGNACION
-                    2. BUSCAR ASIGNACION
-
                     0. Regresar
             """)
         
         while True:
-            op = input("Ingrese opcion: ")
+            op = input("   Ingrese opcion: ")
             if op == "1":
-                #activos.menu()
+                gActivos.getActivoID()
                 break
             elif op == "2":
-                #personal.menu()
-                break
+                gActivos.getActivoCategoria()
             elif op == "0":
                 break
             else:

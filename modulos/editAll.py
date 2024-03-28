@@ -4,7 +4,7 @@ import re
 import os
 
 from tabulate import tabulate
-import getAllData as data
+import modulos.getAllData as data
 
 def Activo():
     while True:
@@ -44,12 +44,45 @@ def Activo():
                 break
         except ValueError:
             print("Error, solo valores enteros !")
+    while True:
+        try:
+            r = input("   Ingrese nuevo CodTransaccion: ").strip()
+            if r:
+                r = int(r)
+                activo["CodTransaccion"] = str(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            r = input("   Ingrese nuevo NroSerial: ").strip()
+            if r:
+                activo["NroSerial"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            r = input("   Ingrese nuevo CodCampus: ").strip()
+            if r:
+                activo["CodCampus"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
 
     #peticion = requests.put(f"http://154.38.171.54:5006/pagos/{id}", json=activo)
     #res = peticion.json()
     print("Activo modificado correctamente")
     input("   Presione ENTER para continuar...")
-
-        
-        
-Activo()

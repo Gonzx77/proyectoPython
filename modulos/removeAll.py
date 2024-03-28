@@ -15,7 +15,13 @@ def Activo():
     while True:
         id = input("   Ingrese ID del Activo al que decea dar de baja: ")
         if id in idsA:
-            break
+            activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
+            activo = activo.json()
+            estado = activo.get("idEstado")
+            if estado != "2":
+                break
+            else:
+                print("Este Activo ya esta dado de baja !")
         else:
             print("Error, este id de Activo no existe !")
             

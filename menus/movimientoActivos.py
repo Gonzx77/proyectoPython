@@ -5,7 +5,7 @@ def menu():
         os.system("clear")
         print(f"""
             
-            ----------- MENU MOVIMIENTO DE ACTIVOS -----------
+            ----------- MENU - MOVIMIENTO DE ACTIVOS -----------
                     
                     1. RETORNO DE ACTIVO
                     2. DAR DE BAJA ACTIVO

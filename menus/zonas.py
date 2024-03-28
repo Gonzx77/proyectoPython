@@ -5,7 +5,7 @@ def menu():
         os.system("clear")
         print(f"""
             
-            ----------- MENU ZONAS -----------
+            ----------- MENU - ZONAS -----------
 
                     1. AGREGAR
                     2. EDITAR
