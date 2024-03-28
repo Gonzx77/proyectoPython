@@ -91,10 +91,20 @@ def ListEstados():
             val.get("Nombre")
         ])
     return result
+def ListActivoNroSerial():
+    peticion = requests.get("http://154.38.171.54:5502/activos")
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append(
+            val.get("NroSerial")
+        )
+    return result
 
 
 
-# L I S T _ I D
+# L I S T A S _ I D
 def ListID_Activos():
     peticion = requests.get("http://154.38.171.54:5502/activos")
     data = peticion.json()

@@ -10,6 +10,7 @@ def menu():
             
                     1. Buscar Activo por ID
                     2. Buscaar Activo por Categoria
+                    3. Buscar Activo por NroSerial
                     
                     0. Regresar
             """)
@@ -21,6 +22,10 @@ def menu():
                 break
             elif op == "2":
                 gActivos.getActivoCategoria()
+                break
+            elif op == "3":
+                gActivos.getActivoNroSerial()
+                break
             elif op == "0":
                 break
             else:

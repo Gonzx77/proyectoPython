@@ -60,3 +60,31 @@ def getActivoCategoria():
     os.system("clear")
     print(tabulate(result, headers=["Nro Item", "Nro Serial", "Nombre", "ID Estado", "ID Categoria"], tablefmt="github"))
     input("\n   Presione ENTER para continuar...")
+    
+    
+def getActivoNroSerial():
+    os.system("clear")
+    while True:
+        NroSerial = input("   Ingrese NroSerial a buscar: ")
+        if NroSerial in data.ListActivoNroSerial():
+            break
+        else:
+            print("Este NroSerial de Activo no existe !")
+            
+    peticion = requests.get(f"http://154.38.171.54:5502/activos")
+    info = peticion.json()
+    
+    result = []
+    for val in info:
+        if val.get("NroSerial") == NroSerial:
+            result.append([
+                val.get("NroItem"),
+                val.get("NroSerial"),
+                val.get("Nombre"),
+                val.get("idEstado"),
+                val.get("idCategoria")
+            ])
+    
+    os.system("clear")
+    print(tabulate(result, headers=["Nro Item", "Nro Serial", "Nombre", "ID Estado", "ID Categoria"], tablefmt="github"))
+    input("\n   Presione ENTER para continuar...")
