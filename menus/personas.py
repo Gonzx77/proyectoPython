@@ -2,6 +2,7 @@ import os
 import modulos.postAll as post
 import modulos.editAll as edit
 import modulos.removeAll as remove
+import menus.buscar.Bpersonas as buscarPersonas
 
 def menu():
     while True:
@@ -30,7 +31,7 @@ def menu():
                 print(remove.Persona())
                 break
             elif op == "4":
-                #asigActivos.menu()
+                buscarPersonas.menu()
                 break
             elif op == "0":
                 break

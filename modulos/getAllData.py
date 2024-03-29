@@ -101,7 +101,16 @@ def ListActivoNroSerial():
             val.get("NroSerial")
         )
     return result
-
+def ListPersonasNombres():
+    peticion = requests.get("http://154.38.171.54:5502/personas")
+    data = peticion.json()
+    
+    result = []
+    for val in data:
+        result.append(
+            val.get("Nombre")
+        )
+    return result
 
 
 # L I S T A S _ I D
