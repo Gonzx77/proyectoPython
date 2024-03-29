@@ -81,18 +81,43 @@ def Activo():
     
 # E L I M I N A R
 def Persona():
-    os.system("clear")
-    idsP = data.ListID_Personas()
-    
+    c = 0
     while True:
-        id = input("   Ingrese ID de Persona a eliminar: ")
-        if id in idsP:
+        if c == 1:
             break
+        os.system("clear")
+        idsP = data.ListID_Personas()
+        
+        while True:
+            id = input("   Ingrese ID de Persona a eliminar: ")
+            if id in idsP:
+                break
+            else:
+                print("Este ID de Persona no existe !")
+        
+        persona = requests.get(f"http://154.38.171.54:5502/personas/{id}")
+        persona = persona.json()
+        
+        activos = requests.get(f"http://154.38.171.54:5502/activos")
+        activos = activos.json()
+        
+        for val in activos:
+            asignaciones = val.get("asignaciones", [])
+            for asignacion in asignaciones:
+                if asignacion.get("AsignadoA") == id and asignacion.get("TipoAsignacion") == "Personal":
+                    c = 1
+        
+        if c == 1:
+            print("No se puede eliminar esta persona, ya que tiene activos asignados !")
+            confirm = input("   Decea eliminar otra persona? (Si/No): ")
+            if confirm.lower() == "si" or confirm.lower() == "s":
+                c = 0
+            else:
+                print("-Bien, operacion cancelada")
+            input("   Presione ENTER para continuar...")
+            
         else:
-            print("Este ID de Persona no existe !")
-    
-    persona = requests.get(f"http://154.38.171.54:5502/personas/{id}")
-    persona = persona.json()
+            break
     
     result = []
     for (key, value) in persona.items():
@@ -115,3 +140,65 @@ def Persona():
     else:
         print("-Bien, operacion cancelada")
     input("   Presione ENTER para continuar...")
+    
+def Zona():
+    c = 0
+    while True:
+        if c == 1:
+            break
+        os.system("clear")
+        idsP = data.ListID_Personas()
+        
+        while True:
+            id = input("   Ingrese ID de Zona a eliminar: ")
+            if id in idsP:
+                break
+            else:
+                print("Este ID de Zona no existe !")
+        
+        zona = requests.get(f"http://154.38.171.54:5502/zonas/{id}")
+        zona = zona.json()
+        
+        activos = requests.get(f"http://154.38.171.54:5502/activos")
+        activos = activos.json()
+        
+        for val in activos:
+            asignaciones = val.get("asignaciones", [])
+            for asignacion in asignaciones:
+                if asignacion.get("AsignadoA") == id and asignacion.get("TipoAsignacion") == "Zona":
+                    c = 1
+        
+        if c == 1:
+            print("No se puede eliminar esta zona, ya que tiene activos asignados !")
+            confirm = input("   Decea eliminar otra zona? (Si/No): ")
+            if confirm.lower() == "si" or confirm.lower() == "s":
+                c = 0
+            else:
+                print("-Bien, operacion cancelada")
+            input("   Presione ENTER para continuar...")
+            
+        else:
+            break
+    
+    result = []
+    for (key, value) in zona.items():
+        if isinstance(value, dict):
+            value_str = json.dumps(value)
+        else:
+            value_str = str(value)
+        result.append([
+            key,
+            value_str
+        ])
+    
+    os.system("clear")
+    print(tabulate(result, headers=["Key", "Contenido"], tablefmt="github"))
+    confirm = input("   Esta es la Zona que desea eliminar? (Si/No): ")
+    if confirm.lower() == "si" or confirm.lower() == "s":
+        peticion = requests.delete(f"http://154.38.171.54:5502/personas/{id}")
+        res = peticion.json()
+        print("-Zona Eliminada")
+    else:
+        print("-Bien, operacion cancelada")
+    input("   Presione ENTER para continuar...")
+    

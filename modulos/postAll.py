@@ -207,3 +207,30 @@ def Persona():
     res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
+    
+def Zona():
+    os.system("clear")
+    newZona = {}
+    
+    print("NUEVO ACTIVO \n")
+    
+    while True:
+        try:
+            newZona["nombreZona"] = input("   Ingrese Nombre de la Zona: ")
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = int(input("   Ingrese Capacidad de la Zona: "))
+            newZona["totalCapacidad"] = str(r)
+            print("-Guardado")
+            break
+        except ValueError:
+            print("Error, solo se permiten numeros !")
+    
+    peticion = requests.post("http://154.38.171.54:5502/zonas", data=json.dumps(newZona))
+    res = peticion.json()
+    print("Zona guardada correctamente \n")
+    input("   Presione ENTER para continuar...")

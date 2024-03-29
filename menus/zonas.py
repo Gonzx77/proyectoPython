@@ -1,4 +1,7 @@
 import os
+import modulos.postAll as post
+import modulos.editAll as edit
+import modulos.removeAll as remove
 
 def menu():
     while True:
@@ -18,13 +21,13 @@ def menu():
         while True:
             op = input("Ingrese opcion: ")
             if op == "1":
-                #activos.menu()
+                print(post.Zona())
                 break
             elif op == "2":
-                #personal.menu()
+                print(edit.Zona())
                 break
             elif op == "3":
-                #zonas.menu()
+                print(remove.Zona())
                 break
             elif op == "4":
                 #asigActivos.menu()

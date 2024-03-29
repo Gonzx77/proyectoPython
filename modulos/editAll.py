@@ -34,6 +34,7 @@ def Activo():
         return result
     
     print("EDITANDO ACTIVO (deje en blanco para mantener) \n")
+    input("   Presione ENTER para continuar...")
     
     while True:
         os.system("clear")
@@ -44,11 +45,11 @@ def Activo():
                 r = int(r)
                 activo["NroItem"] = str(r)
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, solo valores enteros !")
@@ -61,15 +62,15 @@ def Activo():
                 r = int(r)
                 activo["CodTransaccion"] = str(r)
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, solo valores enteros !")
-        input("Presione ENTER para continuar...")
+        input("   Presione ENTER para continuar...")
     while True:
         os.system("clear")
         try:
@@ -77,11 +78,11 @@ def Activo():
             if r:
                 activo["NroSerial"] = r
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -93,13 +94,13 @@ def Activo():
                 if patronCodCampus.match(r):
                     activo["CodCampus"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Error, debe seguir el formato !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, solo valores enteros !")
@@ -111,11 +112,11 @@ def Activo():
                 r = int(r)
                 activo["NroFormulario"] = str(r)
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, solo valores enteros !")
@@ -126,11 +127,11 @@ def Activo():
             if r:
                 activo["Nombre"] = r
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -141,11 +142,11 @@ def Activo():
             if r:
                 activo["Proveedor"] = r
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -156,11 +157,11 @@ def Activo():
             if r:
                 activo["EmpresaResponsable"] = r
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -173,13 +174,13 @@ def Activo():
                 if r in data.ListID_Marcas():
                     activo["idMarca"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Este ID de marca no existe !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -192,13 +193,13 @@ def Activo():
                 if r in data.ListID_Categorias():
                     activo["idCategoria"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Este ID de categoria no existe !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -211,13 +212,13 @@ def Activo():
                 if r in data.ListID_TipoActivos():
                     activo["idTipo"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Este ID de tipo de existe !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -229,11 +230,11 @@ def Activo():
                 r = int(r)
                 activo["ValorUnitario"] = str(r)
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -246,13 +247,13 @@ def Activo():
                 if r in data.ListID_Estados():
                     activo["idEstado"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Este ID de categoria no existe !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -291,6 +292,7 @@ def Persona():
         return result
     
     print("EDITANDO PERSONA (deje en blanco para mantener) \n")
+    input("   Presione ENTER para continuar...")
     
     while True:
         os.system("clear")
@@ -301,11 +303,11 @@ def Persona():
                 r = int(r)
                 persona["nroId (CC, Nit)"] = str(r)
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, solo valores enteros !")
@@ -317,11 +319,11 @@ def Persona():
             if r:
                 persona["Nombre"] = r
                 print("-Modificado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -334,13 +336,13 @@ def Persona():
                 if "@" in r and r.endswith(".com"):
                     persona["Email"] = r
                     print("-Modificado")
-                    input("Presione ENTER para continuar...")
+                    input("   Presione ENTER para continuar...")
                     break
                 else:
                     print("Error, debe seguir el formato !")
             else:
                 print("-Conservado")
-                input("Presione ENTER para continuar...")
+                input("   Presione ENTER para continuar...")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -351,6 +353,7 @@ def Persona():
             if n1:
                 n1 = int(n1)
                 print("-Modificado")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("Este valor no puede estar vacio !")
@@ -363,6 +366,7 @@ def Persona():
             if n2:
                 n2 = int(n2)
                 print("-Guardado")
+                input("   Presione ENTER para continuar...")
                 break
             else:
                 print("Este valor no puede estar vacio !")
@@ -387,4 +391,73 @@ def Persona():
     peticion = requests.put(f"http://154.38.171.54:5502/personas/{id}", json=persona)
     res = peticion.json()
     print("Persona modificada correctamente")
+    input("\n   Presione ENTER para continuar...")
+    
+def Zona():
+    while True:
+        id = input("   Ingrese ID de la Zona a editar: ")
+        if id in data.ListID_Zonas():
+            break
+        else:
+            print("Error, este ID de Zona no existe !")
+        
+        
+    persona = requests.get(f"http://154.38.171.54:5502/zonas/{id}")
+    zona = persona.json()
+    
+    def tabla():
+        result = []
+        for (key, value) in zona.items():
+            if isinstance(value, dict):
+                value_str = json.dumps(value)
+            else:
+                value_str = str(value)
+            result.append([
+                key,
+                value_str
+            ])
+        return result
+    
+    print("EDITANDO ZONA (deje en blanco para mantener) \n")
+    input("   Presione ENTER para continuar...")
+    
+    while True:
+        os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
+        try:
+            r = input("   Ingrese nuevo nombreZona: ").strip()
+            if r:
+                zona["nombreZona"] = r
+                print("-Modificado")
+                input("   Presione ENTER para continuar...")
+                break
+            else:
+                print("-Conservado")
+                input("   Presione ENTER para continuar...")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
+        try:
+            r = input("   Ingrese nueva Capacidad Total: ").strip()
+            if r:
+                r = int(r)
+                zona["totalCapacidad"] = r
+                print("-Modificado")
+                input("   Presione ENTER para continuar...")
+                break
+            else:
+                print("-Conservado")
+                input("   Presione ENTER para continuar...")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
+
+
+
+    peticion = requests.put(f"http://154.38.171.54:5502/zonas/{id}", json=zona)
+    res = peticion.json()
+    print("Zona modificada correctamente")
     input("\n   Presione ENTER para continuar...")
