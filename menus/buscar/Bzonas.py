@@ -22,9 +22,6 @@ def menu():
             elif op == "2":
                 gZonas.getZonasCapacidadMin()
                 break
-            elif op == "3":
-                #gActivos.getActivoNroSerial()
-                break
             elif op == "0":
                 break
             else:
