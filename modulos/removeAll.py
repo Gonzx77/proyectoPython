@@ -5,7 +5,7 @@ import json
 import os
 
 import re
-patronFecha = re.compile("^\d{2}-\d{2}-\d{4}$")
+patronFecha = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 # D A R _ D E _ B A J A
@@ -16,7 +16,7 @@ def Activo():
     idsP = data.ListID_Personas()
     
     while True:
-        id = input("   Ingrese ID del Activo al que decea dar de baja: ")
+        id = input("   Ingrese ID del Activo al que desea dar de baja: ")
         if id in idsA:
             activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             activo = activo.json()
@@ -25,7 +25,7 @@ def Activo():
                 break
             else:
                 print("Este Activo ya esta dado de baja !")
-                confirm = input("\n   Decea dar de baja otro Activo? (Si/No): ")
+                confirm = input("\n   desea dar de baja otro Activo? (Si/No): ")
                 if confirm.lower() == "si" or confirm.lower() == "s":
                     print("Ok")
                 else:
@@ -39,7 +39,7 @@ def Activo():
         if c == 1:
             break
         
-        fecha = input("   Ingrese la fecha en la que se realizo la accion (DD-MM-YYYY): ")
+        fecha = input("   Ingrese la fecha en la que se realizo la accion (YYYY-MM-DD): ")
         if patronFecha.match(fecha):
             break
         else:
@@ -109,7 +109,7 @@ def Persona():
         
         if c == 1:
             print("No se puede eliminar esta persona, ya que tiene activos asignados !")
-            confirm = input("   Decea eliminar otra persona? (Si/No): ")
+            confirm = input("   desea eliminar otra persona? (Si/No): ")
             if confirm.lower() == "si" or confirm.lower() == "s":
                 c = 0
             else:
@@ -170,7 +170,7 @@ def Zona():
         
         if c == 1:
             print("No se puede eliminar esta zona, ya que tiene activos asignados !")
-            confirm = input("   Decea eliminar otra zona? (Si/No): ")
+            confirm = input("   desea eliminar otra zona? (Si/No): ")
             if confirm.lower() == "si" or confirm.lower() == "s":
                 c = 0
             else:
