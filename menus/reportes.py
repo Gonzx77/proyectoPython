@@ -1,4 +1,5 @@
 import os
+import modulos.getReportes as gReportes
 
 def menu():
     while True:
@@ -19,13 +20,13 @@ def menu():
         while True:
             op = input("Ingrese opcion: ")
             if op == "1":
-                #activos.menu()
+                gReportes.getAllActivos()
                 break
             elif op == "2":
-                #personal.menu()
+                gReportes.getActivosCategoria()
                 break
             elif op == "3":
-                #zonas.menu()
+                gReportes.getActivosBajaAño()
                 break
             elif op == "4":
                 #asigActivos.menu()

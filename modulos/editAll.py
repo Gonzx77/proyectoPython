@@ -73,6 +73,7 @@ def Activo():
         input("   Presione ENTER para continuar...")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo NroSerial: ").strip()
             if r:
@@ -88,6 +89,7 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo CodCampus (AAA000): ").strip()
             if r:
@@ -106,6 +108,7 @@ def Activo():
             print("Error, solo valores enteros !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo NroFormulario: ").strip()
             if r:
@@ -122,6 +125,7 @@ def Activo():
             print("Error, solo valores enteros !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo Nombre: ").strip()
             if r:
@@ -137,6 +141,7 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo Proveedor: ").strip()
             if r:
@@ -152,6 +157,7 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo EmpresaResponsable: ").strip()
             if r:
@@ -224,6 +230,7 @@ def Activo():
             print("Error, caracteres invalidos !")
     while True:
         os.system("clear")
+        print(tabulate(tabla(), headers=["Key", "Contenido"], tablefmt="github"))
         try:
             r = input("   Ingrese nuevo ValorUnitario: ").strip()
             if r:

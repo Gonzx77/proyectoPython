@@ -6,8 +6,8 @@ import os
 from tabulate import tabulate
 import modulos.getAllData as data
 
-patronCodCampus = re.compile("^[A-Z]{3}\d{3}$")
-patronFecha = re.compile("^\d{4}-\d{2}-\d{2}$")
+patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
+patronFecha = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 def Activo():
     os.system("clear")
@@ -288,6 +288,17 @@ def crearAsignacion():
                 print("Error, debe seguir el formato !")
         except ValueError:
             print("Error, caracteres invalidos !")
+    while True:
+        if c == 1:
+            break
+        try:
+            person = input("   Ingrese ID de la persona responsable:")
+            if person in data.ListID_Personas():
+                break
+            else:
+                print("Error, este ID de persona no existe !")
+        except ValueError:
+            print("Error, caracteres invalidos !")
         
         
     print(f"""
@@ -331,7 +342,16 @@ def crearAsignacion():
         activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
         activo = activo.json()
         activo["idEstado"] = "1"
+        
+        activoH = activo.get("historialActivos")
         activoAsig = activo.get("asignaciones")
+        
+        activoH.append({
+            "NroId": id,
+            "Fecha": FechaAsignacion,
+            "tipoMov": "1",
+            "idRespMov": person
+        })
         
         activoAsig.append({
             "NroAsignacion": NroAsignacion,
