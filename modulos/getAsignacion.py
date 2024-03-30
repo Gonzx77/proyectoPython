@@ -16,9 +16,13 @@ def getAsignacionID():
             
     peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
     info = peticion.json()
+    x = info.get("asignaciones")
     
-    x = [info.get("asignaciones")]
-    
-    print(tabulate(x, headers=["NroAsignacion", "FechaAsignacion", "TipoAsignacion", "AsignadoA"], tablefmt="github"))
+    tabla = []
+    for asignacion in x:
+        fila = [asignacion.get("NroAsignacion", ""), asignacion.get("FechaAsignacion", ""), asignacion.get("TipoAsignacion", ""), asignacion.get("AsignadoA", "")]
+        tabla.append(fila)
+        
+    print(tabulate(tabla, headers=["NroAsignacion", "FechaAsignacion", "TipoAsignacion", "AsignadoA"], tablefmt="github"))
     
     input("   Presione ENTER para continuar...")
