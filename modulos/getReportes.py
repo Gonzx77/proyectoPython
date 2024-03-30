@@ -40,7 +40,7 @@ def getActivosCategoria():
         else:
             print("Esta Categoria de Activo no existe !")
     
-    peticion = requests.get(f"http://154.38.171.54:5502/activos")
+    peticion = requests.get(f"http://localhost:5501/activos")
     info = peticion.json()
     
     result = []
@@ -85,4 +85,27 @@ def getActivosBajaAño():
     else:
         print("No se dio de baja ningun activo durante este año !")
 
+    input("   Presione ENTER para continuar...")
+    
+def getActivosAsig():
+    
+    activos = data.Activos()
+    
+    result = []
+    
+    for val in activos:
+        asigacion = [val.get("asignaciones")]
+        print("ASIGNACIONES")
+        print(asigacion)
+        if asigacion:
+            ultimaAsig = asigacion[-1]
+            print("ULTIMA ASIGNACION")
+            print(ultimaAsig)
+            for val2 in ultimaAsig:
+                tipo = val2.get("TipoAsignacion")
+                id = val2.get("AsignadoA")
+                if tipo and id:
+                    print("RESULTADOS")
+                    print(tipo, id)
+        
     input("   Presione ENTER para continuar...")

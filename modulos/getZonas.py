@@ -14,7 +14,7 @@ def getZonaID():
         else:
             print("Este ID de Zona no existe !")
     
-    peticion = requests.get(f"http://154.38.171.54:5502/zonas/{id}")
+    peticion = requests.get(f"http://localhost:5501/zonas/{id}")
     info = peticion.json()
     
     result = []
@@ -41,7 +41,7 @@ def getZonasCapacidadMin():
         except ValueError:
             print("Error, solo valores enteros !")
     
-    peticion = requests.get(f"http://154.38.171.54:5502/zonas")
+    peticion = requests.get(f"http://localhost:5501/zonas")
     info = peticion.json()
     
     result = []

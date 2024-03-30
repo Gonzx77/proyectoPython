@@ -125,7 +125,7 @@ def Activo():
     newActivo["historialActivos"] = []
     newActivo["asignaciones"] = []
 
-    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newActivo))
+    peticion = requests.post("http://localhost:5501/activos", data=json.dumps(newActivo))
     res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
@@ -204,7 +204,7 @@ def Persona():
         }
     ]
     
-    peticion = requests.post("http://154.38.171.54:5502/personas", data=json.dumps(newPersona))
+    peticion = requests.post("http://localhost:5501/personas", data=json.dumps(newPersona))
     res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
@@ -231,7 +231,7 @@ def Zona():
         except ValueError:
             print("Error, solo se permiten numeros !")
     
-    peticion = requests.post("http://154.38.171.54:5502/zonas", data=json.dumps(newZona))
+    peticion = requests.post("http://localhost:5501/zonas", data=json.dumps(newZona))
     res = peticion.json()
     print("Zona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
@@ -248,7 +248,7 @@ def crearAsignacion():
             break
         id = input("   Ingrese ID del Activo al que desea mover: ")
         if id in data.ListID_Activos():
-            peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
+            peticion = requests.get(f"http://localhost:5501/activos/{id}")
             info = [peticion.json()]
             result = []
             for val in info:
@@ -339,7 +339,7 @@ def crearAsignacion():
             
             
     if c == 1:
-        activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
+        activo = requests.get(f"http://localhost:5501/activos/{id}")
         activo = activo.json()
         activo["idEstado"] = "1"
         
@@ -360,7 +360,7 @@ def crearAsignacion():
             "AsignadoA": AsignadoA
         })
         
-        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
+        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
         res = peticion.json()
         
         print("Asignacion Terminada \n")

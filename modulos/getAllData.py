@@ -2,42 +2,42 @@ import requests
 
 # D A T A 
 def Activos():
-    peticion = requests.get("http://154.38.171.54:5502/activos")
+    peticion = requests.get("http://localhost:5501/activos")
     data = peticion.json()
     return data
 def Marcas():
-    peticion = requests.get("http://154.38.171.54:5502/marcas")
+    peticion = requests.get("http://localhost:5501/marcas")
     data = peticion.json()
     return data
 def CategoriaActivos():
-    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/categoriaActivos")
     data = peticion.json()
     return data
 def TipoMovActivos():
-    peticion = requests.get("http://154.38.171.54:5502/tipoMovActivos")
+    peticion = requests.get("http://localhost:5501/tipoMovActivos")
     data = peticion.json()
     return data
 def Estados():
-    peticion = requests.get("http://154.38.171.54:5502/estados")
+    peticion = requests.get("http://localhost:5501/estados")
     data = peticion.json()
     return data
 def TipoActivos():
-    peticion = requests.get("http://154.38.171.54:5502/tipoActivos")
+    peticion = requests.get("http://localhost:5501/tipoActivos")
     data = peticion.json()
     return data
 def Personas():
-    peticion = requests.get("http://154.38.171.54:5502/personas")
+    peticion = requests.get("http://localhost:5501/personas")
     data = peticion.json()
     return data
 def Zonas():
-    peticion = requests.get("http://154.38.171.54:5502/zonas")
+    peticion = requests.get("http://localhost:5501/zonas")
     data = peticion.json()
     return data
 
 
 # T E L E F O N O S
 def TelefonosPersonas():
-    peticion = requests.get("http://154.38.171.54:5502/personas")
+    peticion = requests.get("http://localhost:5501/personas")
     peticion = peticion.json()
     telefonos = []
     for val in peticion:
@@ -48,7 +48,7 @@ def TelefonosPersonas():
 
 # L I S T A S
 def ListMarcas():
-    peticion = requests.get("http://154.38.171.54:5502/marcas")
+    peticion = requests.get("http://localhost:5501/marcas")
     data = peticion.json()
     
     result = []
@@ -59,7 +59,7 @@ def ListMarcas():
         ])
     return result
 def ListCategorias():
-    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/categoriaActivos")
     data = peticion.json()
     
     result = []
@@ -70,7 +70,7 @@ def ListCategorias():
         ])
     return result
 def ListTipoActivos():
-    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/categoriaActivos")
     data = peticion.json()
     
     result = []
@@ -81,7 +81,7 @@ def ListTipoActivos():
         ])
     return result
 def ListEstados():
-    peticion = requests.get("http://154.38.171.54:5502/estados")
+    peticion = requests.get("http://localhost:5501/estados")
     data = peticion.json()
     
     result = []
@@ -92,7 +92,7 @@ def ListEstados():
         ])
     return result
 def ListActivoNroSerial():
-    peticion = requests.get("http://154.38.171.54:5502/activos")
+    peticion = requests.get("http://localhost:5501/activos")
     data = peticion.json()
     
     result = []
@@ -102,7 +102,7 @@ def ListActivoNroSerial():
         )
     return result
 def ListPersonasNombres():
-    peticion = requests.get("http://154.38.171.54:5502/personas")
+    peticion = requests.get("http://localhost:5501/personas")
     data = peticion.json()
     
     result = []
@@ -115,49 +115,49 @@ def ListPersonasNombres():
 
 # L I S T A S _ I D
 def ListID_Activos():
-    peticion = requests.get("http://154.38.171.54:5502/activos")
+    peticion = requests.get("http://localhost:5501/activos")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_Personas():
-    peticion = requests.get("http://154.38.171.54:5502/personas")
+    peticion = requests.get("http://localhost:5501/personas")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_Zonas():
-    peticion = requests.get("http://154.38.171.54:5502/zonas")
+    peticion = requests.get("http://localhost:5501/zonas")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_Marcas():
-    peticion = requests.get("http://154.38.171.54:5502/marcas")
+    peticion = requests.get("http://localhost:5501/marcas")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_Categorias():
-    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/categoriaActivos")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_TipoActivos():
-    peticion = requests.get("http://154.38.171.54:5502/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/categoriaActivos")
     data = peticion.json()
     result = []
     for val in data:
         result.append(val.get("id"))
     return result
 def ListID_Estados():
-    peticion = requests.get("http://154.38.171.54:5502/estados")
+    peticion = requests.get("http://localhost:5501/estados")
     data = peticion.json()
     result = []
     for val in data:
@@ -167,7 +167,7 @@ def ListID_Estados():
 
 # L I S T A _ A S I G N A C I O N E S
 def ListID_ActivosAsignacion():
-    peticion = requests.get("http://154.38.171.54:5502/activos")
+    peticion = requests.get("http://localhost:5501/activos")
     data = peticion.json()
     result = []
     for val in data:

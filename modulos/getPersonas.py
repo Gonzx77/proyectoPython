@@ -13,7 +13,7 @@ def getPersonaID():
         else:
             print("Este ID de Persona no existe !")
     
-    peticion = requests.get(f"http://154.38.171.54:5502/personas/{id}")
+    peticion = requests.get(f"http://localhost:5501/personas/{id}")
     info = peticion.json()
     
     result = []

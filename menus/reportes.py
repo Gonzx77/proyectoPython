@@ -29,7 +29,7 @@ def menu():
                 gReportes.getActivosBajaAño()
                 break
             elif op == "4":
-                #asigActivos.menu()
+                gReportes.getActivosAsig()
                 break
             elif op == "5":
                 #reportes.menu()

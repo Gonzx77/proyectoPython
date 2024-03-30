@@ -6,6 +6,7 @@ import menus.asginacionActivos as asigActivos
 import menus.reportes as reportes
 import menus.movimientoActivos as movActivos
 
+# json-server storage/database.json -b 5501
 
 def menuInicial():
     while True:
