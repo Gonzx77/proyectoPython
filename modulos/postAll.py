@@ -241,22 +241,45 @@ def Zona():
 def crearAsignacion():
     os.system("clear")
     
-    opciones = ["1", "2"]
     c = 0
     
     while True:
+        if c == 1:
+            break
         id = input("   Ingrese ID del Activo al que desea mover: ")
         if id in data.ListID_Activos():
-            break
+            peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
+            info = [peticion.json()]
+            result = []
+            for val in info:
+                result.append(
+                    val.get("idEstado")
+                )
+            print(result)
+            if result == ["0"]:
+                break
+            else:
+                print("Este Activo no se encuentra en un estado valido para ser asignado !")
+                a = input("   Decea intentarlo con otro activo? (Si/No): ")
+                if a.lower() == "si" or a.lower() == "s":
+                    print("Ok")
+                else:
+                    c = 1
+                    break
+                
         else:
             print("Este ID de activo no existe !")
     while True:
+        if c == 1:
+            break
         try:
             NroAsignacion = int(input("   Ingrese NroAsignacion: "))
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
+        if c == 1:
+            break
         try:
             FechaAsignacion = input("   Ingrese FechaAsignacion (YYYY-MM-DD):")
             if patronFecha.match(FechaAsignacion):
@@ -277,27 +300,26 @@ def crearAsignacion():
             break
         try:
             a = input("\n   Seleccione tipo de asignacion: ")
-            if a in opciones:
-                if a == "1":
-                    while True:
-                        b = input("   Ingrese ID a la persona que decea asignar el Activo: ")
-                        if b in data.ListID_Activos():
-                            TipoAsignacion = "Personal"
-                            AsignadoA = b
-                            c = 1
-                            break
-                        else:
-                            print("Este ID de Activo no existe !")
-                elif a == "2":
-                    while True:
-                        b = input("   Ingrese ID a la Zona que decea asignar el Activo: ")
-                        if b in data.ListID_Zonas():
-                            TipoAsignacion = "Zona"
-                            AsignadoA = b
-                            c = 1
-                            break
-                        else:
-                            print("Este ID de Zona no existe !")
+            if a == "1":
+                while True:
+                    b = input("   Ingrese ID a la persona que decea asignar el Activo: ")
+                    if b in data.ListID_Activos():
+                        TipoAsignacion = "Personal"
+                        AsignadoA = b
+                        c = 1
+                        break
+                    else:
+                        print("Este ID de Activo no existe !")
+            elif a == "2":
+                while True:
+                    b = input("   Ingrese ID a la Zona que decea asignar el Activo: ")
+                    if b in data.ListID_Zonas():
+                        TipoAsignacion = "Zona"
+                        AsignadoA = b
+                        c = 1
+                        break
+                    else:
+                        print("Este ID de Zona no existe !")
             else:
                 print("Esta opcion no esta en la lista de opciones !")
         except ValueError:
@@ -305,19 +327,21 @@ def crearAsignacion():
             
             
             
-    activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
-    activo = activo.json()
-    activoAsig = activo.get("asignaciones")
-    
-    activoAsig.append({
-        "NroAsignacion": NroAsignacion,
-        "FechaAsignacion": FechaAsignacion,
-        "TipoAsignacion": TipoAsignacion,
-        "AsignadoA": AsignadoA
-    })
-    
-    peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
-    res = peticion.json()
-    
-    print("Asignacion Terminada \n")
-    input("   Presione ENTER para continuar...")
+    if c == 1:
+        activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
+        activo = activo.json()
+        activo["idEstado"] = "1"
+        activoAsig = activo.get("asignaciones")
+        
+        activoAsig.append({
+            "NroAsignacion": NroAsignacion,
+            "FechaAsignacion": FechaAsignacion,
+            "TipoAsignacion": TipoAsignacion,
+            "AsignadoA": AsignadoA
+        })
+        
+        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
+        res = peticion.json()
+        
+        print("Asignacion Terminada \n")
+        input("   Presione ENTER para continuar...")

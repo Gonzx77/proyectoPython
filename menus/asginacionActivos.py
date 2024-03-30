@@ -1,5 +1,6 @@
 import os
 import modulos.postAll as post
+import modulos.getAsignacion as gAsignacion
 
 def menu():
     while True:
@@ -20,7 +21,7 @@ def menu():
                 print(post.crearAsignacion())
                 break
             elif op == "2":
-                #personal.menu()
+                print(gAsignacion.getAsignacionID())
                 break
             elif op == "0":
                 break
