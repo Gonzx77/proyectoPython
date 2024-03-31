@@ -8,7 +8,6 @@ import re
 patronFecha = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
-# D A R _ D E _ B A J A
 def Activo():
     c = 0
     os.system("clear")
@@ -16,16 +15,16 @@ def Activo():
     idsP = data.ListID_Personas()
     
     while True:
-        id = input("   Ingrese ID del Activo al que desea dar de baja: ")
+        id = input("   Ingrese ID del Activo al que desea eliminar: ")
         if id in idsA:
             activo = requests.get(f"http://localhost:5501/activos/{id}")
             activo = activo.json()
             estado = activo.get("idEstado")
-            if estado != "2":
+            if estado == "2" or estado == "0":
                 break
             else:
-                print("Este Activo ya esta dado de baja !")
-                confirm = input("\n   desea dar de baja otro Activo? (Si/No): ")
+                print("Este Activo no se puede eliminar, su estado no lo permite !")
+                confirm = input("\n   desea eliminar otro Activo? (Si/No): ")
                 if confirm.lower() == "si" or confirm.lower() == "s":
                     print("Ok")
                 else:
@@ -59,27 +58,28 @@ def Activo():
         if c == 1:
             break
         
-        activo = requests.get(f"http://localhost:5501/activos/{id}")
-        activo = activo.json()
-        activoH = activo.get("historialActivos")
-        activo["idEstado"] = "1"
+        result = []
+        for (key, value) in activo.items():
+            if isinstance(value, dict):
+                value_str = json.dumps(value)
+            else:
+                value_str = str(value)
+            result.append([
+                key,
+                value_str
+            ])
         
-        activoH.append({
-            "NroId": "1",
-            "Fecha": fecha,
-            "tipoMov": "2",
-            "idRespMov": person
-        })
-        
-        activo["idEstado"] = "2"
-        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
-        res = peticion.json()
-        
-        print("Activo dado de baja correctamente \n")
+        os.system("clear")
+        print(tabulate(result, headers=["Key", "Contenido"], tablefmt="github"))
+        confirm = input("   Esta es la persona que desea eliminar? (Si/No): ")
+        if confirm.lower() == "si" or confirm.lower() == "s":
+            peticion = requests.delete(f"http://localhost:5501/activos/{id}")
+            print("-Persona Eliminada")
+        else:
+            print("-Bien, operacion cancelada")
         input("   Presione ENTER para continuar...")
         break
     
-# E L I M I N A R
 def Persona():
     c = 0
     while True:
@@ -135,7 +135,6 @@ def Persona():
     confirm = input("   Esta es la persona que desea eliminar? (Si/No): ")
     if confirm.lower() == "si" or confirm.lower() == "s":
         peticion = requests.delete(f"http://localhost:5501/personas/{id}")
-        res = peticion.json()
         print("-Persona Eliminada")
     else:
         print("-Bien, operacion cancelada")
@@ -196,7 +195,6 @@ def Zona():
     confirm = input("   Esta es la Zona que desea eliminar? (Si/No): ")
     if confirm.lower() == "si" or confirm.lower() == "s":
         peticion = requests.delete(f"http://localhost:5501/personas/{id}")
-        res = peticion.json()
         print("-Zona Eliminada")
     else:
         print("-Bien, operacion cancelada")

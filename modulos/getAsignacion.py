@@ -8,7 +8,12 @@ import json
 def getAsignacionID():
     os.system("clear")
     while True:
-        id = input("   Ingrese ID del activo al que desea listar las asignaciones: ")
+        while True:
+            try:
+                id = int(input("   Ingrese ID del activo al que desea listar las asignaciones: "))
+                break
+            except ValueError:
+                print("Solo valores enteros !")
         if id in data.ListID_Activos():
             break
         else:

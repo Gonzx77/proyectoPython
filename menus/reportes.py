@@ -32,7 +32,7 @@ def menu():
                 gReportes.getActivosAsig()
                 break
             elif op == "5":
-                #reportes.menu()
+                gReportes.getHistorialActivo()
                 break
             elif op == "0":
                 break

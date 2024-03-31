@@ -246,7 +246,7 @@ def Activo():
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
-        
+        os.system("clear")
         try:
             print(tabulate(data.ListEstados(), headers=["ID", "Estado"], tablefmt="github"))
             r = input("\n   Ingrese nuevo idEstado: ").strip()
@@ -269,7 +269,6 @@ def Activo():
 
 
     peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
-    res = peticion.json()
     print("Activo modificado correctamente")
     input("\n   Presione ENTER para continuar...")
     
@@ -396,7 +395,6 @@ def Persona():
 
 
     peticion = requests.put(f"http://localhost:5501/personas/{id}", json=persona)
-    res = peticion.json()
     print("Persona modificada correctamente")
     input("\n   Presione ENTER para continuar...")
     
@@ -465,6 +463,5 @@ def Zona():
 
 
     peticion = requests.put(f"http://localhost:5501/zonas/{id}", json=zona)
-    res = peticion.json()
     print("Zona modificada correctamente")
     input("\n   Presione ENTER para continuar...")

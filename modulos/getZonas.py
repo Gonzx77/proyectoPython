@@ -8,11 +8,14 @@ import json
 def getZonaID():
     os.system("clear")
     while True:
-        id = input("   Ingrese ID a buscar: ")
-        if id in data.ListID_Zonas():
-            break
-        else:
-            print("Este ID de Zona no existe !")
+        try:
+            id = int(input("   Ingrese ID a buscar: "))
+            if id in data.ListID_Zonas():
+                break
+            else:
+                print("Este ID de Zona no existe !")
+        except ValueError:
+            print("Solo valores enteros !")
     
     peticion = requests.get(f"http://localhost:5501/zonas/{id}")
     info = peticion.json()

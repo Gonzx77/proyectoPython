@@ -15,13 +15,12 @@ def Activo():
     
     print("NUEVO ACTIVO \n")
     
-    while True:
-        try:
-            newActivo["NroItem"] = int(input("   Ingrese numero de item del activo: "))
-            print("-Guardado")
-            break
-        except ValueError:
-            print("Error, solo valores enteros !")
+    info = data.Activos()
+    for val in info:
+        x = val.get("NroItem")
+        
+    newActivo["NroItem"] = x + 1
+    
     while True:
         try:
             newActivo["CodTransaccion"] = int(input("   Ingrese codigo de transaccion del activo: "))
@@ -48,13 +47,13 @@ def Activo():
                 print("Error, debe seguir el formato !")
         except ValueError:
             print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newActivo["NroFormulario"] = int(input("   Ingrese numero formulario del activo: "))
-            print("-Guardado")
-            break
-        except ValueError:
-            print("Error, solo valores enteros !")
+
+    info2 = data.Activos()
+    for val in info2:
+        x = val.get("NroFormulario")
+        
+    newActivo["NroFormulario"] = x + 1
+    
     while True:
         try:
             newActivo["Nombre"] = input("   Ingrese nombre del activo: ")
@@ -126,7 +125,6 @@ def Activo():
     newActivo["asignaciones"] = []
 
     peticion = requests.post("http://localhost:5501/activos", data=json.dumps(newActivo))
-    res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
 
@@ -136,18 +134,14 @@ def Persona():
     
     print("NUEVO ACTIVO \n")
     
-    while True:
-        try:
-            id = input("   Ingrese ID de la persona (4 caracteres): ")
-            id = id.lower()
-            if len(id) == 4:
-                newPersona["id"] = str(id)
-                print("-Guardado")
-                break
-            else:
-                print("Error, debe incluir 4 caracteres !")
-        except ValueError:
-            print("Error, caracteres invalidos !")
+    info = data.Personas()
+    for val in info:
+        x = val.get("id")
+        
+    id = str(int(x) + 1)
+    newPersona["id"] = id
+    
+    
     while True:
         try:
             r = int(input("   Ingrese identificacion de la persona: "))
@@ -205,7 +199,6 @@ def Persona():
     ]
     
     peticion = requests.post("http://localhost:5501/personas", data=json.dumps(newPersona))
-    res = peticion.json()
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
     
@@ -232,7 +225,6 @@ def Zona():
             print("Error, solo se permiten numeros !")
     
     peticion = requests.post("http://localhost:5501/zonas", data=json.dumps(newZona))
-    res = peticion.json()
     print("Zona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
     
@@ -246,7 +238,12 @@ def crearAsignacion():
     while True:
         if c == 1:
             break
-        id = input("   Ingrese ID del Activo al que desea mover: ")
+        while True:
+            try:
+                id = int(input("   Ingrese ID del Activo al que desea mover: "))
+                break
+            except ValueError:
+                print("Solo valores enteros !")
         if id in data.ListID_Activos():
             peticion = requests.get(f"http://localhost:5501/activos/{id}")
             info = [peticion.json()]
@@ -255,7 +252,6 @@ def crearAsignacion():
                 result.append(
                     val.get("idEstado")
                 )
-            print(result)
             if result == ["0"]:
                 break
             else:
@@ -292,7 +288,7 @@ def crearAsignacion():
         if c == 1:
             break
         try:
-            person = input("   Ingrese ID de la persona responsable:")
+            person = input("   Ingrese ID de la persona responsable: ")
             if person in data.ListID_Personas():
                 break
             else:
@@ -361,7 +357,6 @@ def crearAsignacion():
         })
         
         peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
-        res = peticion.json()
         
         print("Asignacion Terminada \n")
         input("   Presione ENTER para continuar...")

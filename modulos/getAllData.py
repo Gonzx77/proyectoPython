@@ -70,7 +70,7 @@ def ListCategorias():
         ])
     return result
 def ListTipoActivos():
-    peticion = requests.get("http://localhost:5501/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/tipoActivos")
     data = peticion.json()
     
     result = []
