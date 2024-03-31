@@ -11,7 +11,7 @@ patronCodCampus = re.compile(r"^[A-Z]{3}\d{3}$")
 def Activo():
     while True:
         id = input("   Ingrese ID del Activo a editar: ")
-        if id in data.ListID_Activos():
+        if id in str(data.ListID_Activos()):
             break
         else:
             print("Error, este ID de Activo no existe !")
@@ -275,7 +275,7 @@ def Activo():
 def Persona():
     while True:
         id = input("   Ingrese ID de Persona a editar: ")
-        if id in data.ListID_Personas():
+        if id in str(data.ListID_Personas()):
             break
         else:
             print("Error, este ID de Persona no existe !")
@@ -401,7 +401,7 @@ def Persona():
 def Zona():
     while True:
         id = input("   Ingrese ID de la Zona a editar: ")
-        if id in data.ListID_Zonas():
+        if id in str(data.ListID_Zonas()):
             break
         else:
             print("Error, este ID de Zona no existe !")

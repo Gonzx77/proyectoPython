@@ -150,7 +150,7 @@ def ListID_Categorias():
         result.append(val.get("id"))
     return result
 def ListID_TipoActivos():
-    peticion = requests.get("http://localhost:5501/categoriaActivos")
+    peticion = requests.get("http://localhost:5501/tipoaActivos")
     data = peticion.json()
     result = []
     for val in data:

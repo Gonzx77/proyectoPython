@@ -8,7 +8,7 @@ def getPersonaID():
     os.system("clear")
     while True:
         id = input("   Ingrese ID a buscar: ")
-        if id in data.ListID_Personas():
+        if id in str(data.ListID_Personas()):
             break
         else:
             print("Este ID de Persona no existe !")

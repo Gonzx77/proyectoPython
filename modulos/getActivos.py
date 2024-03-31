@@ -9,7 +9,7 @@ def getActivoID():
     os.system("clear")
     while True:
         id = input("   Ingrese ID a buscar: ")
-        if id in data.ListID_Activos():
+        if id in str(data.ListID_Activos()):
             break
         else:
             print("Este ID de Activo no existe !")

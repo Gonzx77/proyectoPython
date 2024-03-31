@@ -1,4 +1,5 @@
 import os
+import modulos.postAll as post
 
 def menu():
     while True:
@@ -18,16 +19,16 @@ def menu():
         while True:
             op = input("Ingrese opcion: ")
             if op == "1":
-                #activos.menu()
+                post.retornoActivo()
                 break
             elif op == "2":
-                #personal.menu()
+                post.darBajaActivo()
                 break
             elif op == "3":
-                #zonas.menu()
+                post.reasignarActivo()
                 break
             elif op == "4":
-                #asigActivos.menu()
+                post.garantiaActivo()
                 break
             elif op == "0":
                 break

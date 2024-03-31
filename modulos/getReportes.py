@@ -120,8 +120,8 @@ def getHistorialActivo():
     os.system("clear")
     while True:
         try:
-            id = int(input("   Ingrese ID del activo al que desea buscar su historial: "))
-            if id in data.ListID_Activos():
+            id = input("   Ingrese ID del activo al que desea buscar su historial: ")
+            if id in str(data.ListID_Activos()):
                 break
             else:
                 print("Este ID de Activo no existe !")
