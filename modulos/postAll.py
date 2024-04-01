@@ -314,6 +314,7 @@ def crearAsignacion():
                     if b in str(data.ListID_Personas()):
                         TipoAsignacion = "Personal"
                         AsignadoA = b
+                        c = 1
                         break
                     else:
                         print("Este ID de Activo no existe !")
@@ -324,6 +325,7 @@ def crearAsignacion():
                         if b in str(data.ListID_Zonas()):
                             TipoAsignacion = "Zona"
                             AsignadoA = b
+                            c = 1
                             break
                         else:
                             print("Este ID de Zona no existe !")
@@ -336,7 +338,7 @@ def crearAsignacion():
             
             
             
-    if c == 0:
+    if c == 1:
         activo = peticion.json()
         activo["idEstado"] = "1"
         activo["id"]
