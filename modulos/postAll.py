@@ -401,7 +401,7 @@ def retornoActivo():
                 result.append(
                     val.get("idEstado")
                 )
-            if result == ["1"]:
+            if result == ["1"] or result == ["3"]:
                 break
             else:
                 print("Este Activo no se encuentra en un estado valido para ser asignado !")
