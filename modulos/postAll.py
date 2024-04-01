@@ -341,7 +341,7 @@ def crearAsignacion():
     if c == 1:
         activo = peticion.json()
         activo["idEstado"] = "1"
-        activo["id"]
+        #activo["id"] = id
         
         activoH = activo.get("historialActivos")
         activoAsig = activo.get("asignaciones")
@@ -375,11 +375,25 @@ def retornoActivo():
             break
         while True:
             try:
-                id = int(input("   Ingrese ID del Activo que desea retornar: "))
-                break
+                id = input("   Ingrese ID del Activo que desea retornar: ")
+                if id in str(data.ListID_Activos()):
+                    break
+                else:
+                    print("Este ID de activo no existe !")
             except ValueError:
                 print("Solo valores enteros !")
-        if str(id) in data.ListID_Activos():
+                
+        while True:
+            try:
+                FechaAsignacion = input("   Ingrese fecha en la que se realizo el retorno (YYYY-MM-DD): ")
+                if patronFecha.match(FechaAsignacion):
+                    break
+                else:
+                    print("Debe seguir el formato de fecha !")
+            except ValueError:
+                print("Caracteres invalidos !")
+                
+        if id in str(data.ListID_Activos()):
             peticion = requests.get(f"http://localhost:5501/activos/{id}")
             info = [peticion.json()]
             result = []
@@ -393,11 +407,10 @@ def retornoActivo():
                 print("Este Activo no se encuentra en un estado valido para ser asignado !")
                 a = input("   Decea intentarlo con otro activo? (Si/No): ")
                 if a.lower() == "si" or a.lower() == "s":
-                    print("Ok")
+                    os.system("clear")
                 else:
                     c = 1
                     break
-                
         else:
             print("Este ID de activo no existe !")
 
@@ -405,6 +418,14 @@ def retornoActivo():
         activo = requests.get(f"http://localhost:5501/activos/{id}")
         activo = activo.json()
         activo["idEstado"] = "0"
+        activoH = activo.get("historialActivos")
+        
+        activoH.append({
+            "NroId": id,
+            "Fecha": FechaAsignacion,
+            "tipoMov": "4",
+            "idRespMov": "Campuslands"
+        })
         
         requests.put(f"http://localhost:5501/activos/{id}", json=activo)
         

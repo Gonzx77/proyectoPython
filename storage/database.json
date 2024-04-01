@@ -13,7 +13,7 @@
             "idCategoria": "1",
             "idTipo": "2",
             "ValorUnitario": "20000",
-            "idEstado": "1",
+            "idEstado": "0",
             "id": 1,
             "historialActivos": [
                 {
@@ -45,7 +45,7 @@
             "idCategoria": "1",
             "idTipo": "1",
             "ValorUnitario": "10000",
-            "idEstado": "1",
+            "idEstado": "0",
             "id": 2,
             "historialActivos": [
                 {
@@ -62,9 +62,9 @@
                 },
                 {
                     "NroId": "2",
-                    "Fecha": "2024-03-30",
+                    "Fecha": "2024-04-01",
                     "tipoMov": "4",
-                    "idRespMov": "9"
+                    "idRespMov": "Campuslands"
                 }
             ],
             "asignaciones": [
