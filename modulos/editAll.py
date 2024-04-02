@@ -17,7 +17,7 @@ def Activo():
             print("Error, este ID de Activo no existe !")
         
         
-    activo = requests.get(f"http://localhost:5501/activos/{id}")
+    activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
     activo = activo.json()
     
     def tabla():
@@ -268,7 +268,7 @@ def Activo():
 
 
 
-    peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+    peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
     print("Activo modificado correctamente")
     input("\n   Presione ENTER para continuar...")
     
@@ -281,7 +281,7 @@ def Persona():
             print("Error, este ID de Persona no existe !")
         
         
-    persona = requests.get(f"http://localhost:5501/personas/{id}")
+    persona = requests.get(f"http://154.38.171.54:5502/personas/{id}")
     persona = persona.json()
     
     def tabla():
@@ -394,7 +394,7 @@ def Persona():
 
 
 
-    peticion = requests.put(f"http://localhost:5501/personas/{id}", json=persona)
+    peticion = requests.put(f"http://154.38.171.54:5502/personas/{id}", json=persona)
     print("Persona modificada correctamente")
     input("\n   Presione ENTER para continuar...")
     
@@ -407,7 +407,7 @@ def Zona():
             print("Error, este ID de Zona no existe !")
         
         
-    persona = requests.get(f"http://localhost:5501/zonas/{id}")
+    persona = requests.get(f"http://154.38.171.54:5502/zonas/{id}")
     zona = persona.json()
     
     def tabla():
@@ -462,6 +462,6 @@ def Zona():
 
 
 
-    peticion = requests.put(f"http://localhost:5501/zonas/{id}", json=zona)
+    peticion = requests.put(f"http://154.38.171.54:5502/zonas/{id}", json=zona)
     print("Zona modificada correctamente")
     input("\n   Presione ENTER para continuar...")

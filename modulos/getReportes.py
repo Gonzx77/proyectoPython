@@ -40,7 +40,7 @@ def getActivosCategoria():
         else:
             print("Esta Categoria de Activo no existe !")
     
-    peticion = requests.get(f"http://localhost:5501/activos")
+    peticion = requests.get(f"http://154.38.171.54:5502/activos")
     info = peticion.json()
     
     result = []
@@ -128,7 +128,7 @@ def getHistorialActivo():
         except ValueError:
             print("Solo valores enteros !")
             
-    activo = requests.get(f"http://localhost:5501/activos/{id}")
+    activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
     activo = activo.json()
     activoH = activo.get("historialActivos")
     

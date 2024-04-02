@@ -19,7 +19,7 @@ def getAsignacionID():
         else:
             print("Este ID de activo no existe !")
             
-    peticion = requests.get(f"http://localhost:5501/activos/{id}")
+    peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
     info = peticion.json()
     x = info.get("asignaciones")
     

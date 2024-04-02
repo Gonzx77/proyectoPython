@@ -18,11 +18,8 @@ def Activo():
     info = data.Activos()
     for val in info:
         x = val.get("NroItem")
-    for val in info:
-        x1 = val.get("id")
         
     newActivo["NroItem"] = x + 1
-    newActivo["id"] = str(int(x1) + 1)
     
     while True:
         try:
@@ -127,7 +124,7 @@ def Activo():
     newActivo["historialActivos"] = []
     newActivo["asignaciones"] = []
 
-    peticion = requests.post("http://localhost:5501/activos", data=json.dumps(newActivo))
+    peticion = requests.post("http://154.38.171.54:5502/activos", data=json.dumps(newActivo))
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
 
@@ -136,14 +133,6 @@ def Persona():
     newPersona = {}
     
     print("NUEVO ACTIVO \n")
-    
-    info = data.Personas()
-    for val in info:
-        x = val.get("id")
-        
-    id = str(int(x) + 1)
-    newPersona["id"] = id
-    
     
     while True:
         try:
@@ -201,7 +190,7 @@ def Persona():
         }
     ]
     
-    peticion = requests.post("http://localhost:5501/personas", data=json.dumps(newPersona))
+    peticion = requests.post("http://154.38.171.54:5502/personas", data=json.dumps(newPersona))
     print("Persona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
     
@@ -227,7 +216,7 @@ def Zona():
         except ValueError:
             print("Error, solo se permiten numeros !")
     
-    peticion = requests.post("http://localhost:5501/zonas", data=json.dumps(newZona))
+    peticion = requests.post("http://154.38.171.54:5502/zonas", data=json.dumps(newZona))
     print("Zona guardada correctamente \n")
     input("   Presione ENTER para continuar...")
     
@@ -248,7 +237,7 @@ def crearAsignacion():
             except ValueError:
                 print("Solo valores enteros !")
         if id in str(data.ListID_Activos()):
-            peticion = requests.get(f"http://localhost:5501/activos/{id}")
+            peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             info = [peticion.json()]
             result = []
             for val in info:
@@ -360,7 +349,7 @@ def crearAsignacion():
             "AsignadoA": AsignadoA
         })
         
-        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
         
         print("Asignacion Terminada \n")
         input("   Presione ENTER para continuar...")
@@ -394,7 +383,7 @@ def retornoActivo():
                 print("Caracteres invalidos !")
                 
         if id in str(data.ListID_Activos()):
-            peticion = requests.get(f"http://localhost:5501/activos/{id}")
+            peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             info = [peticion.json()]
             result = []
             for val in info:
@@ -415,7 +404,7 @@ def retornoActivo():
             print("Este ID de activo no existe !")
 
     while True:
-        activo = requests.get(f"http://localhost:5501/activos/{id}")
+        activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
         activo = activo.json()
         activo["idEstado"] = "0"
         activoH = activo.get("historialActivos")
@@ -427,7 +416,7 @@ def retornoActivo():
             "idRespMov": "Campuslands"
         })
         
-        requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+        requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
         
         print("Retorno Terminado \n")
         input("   Presione ENTER para continuar...")
@@ -442,7 +431,7 @@ def darBajaActivo():
     while True:
         id = input("   Ingrese ID del Activo al que desea dar de baja: ")
         if id in idsA:
-            activo = requests.get(f"http://localhost:5501/activos/{id}")
+            activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             activo = [activo.json()]
             result = []
             for val in activo:
@@ -487,7 +476,7 @@ def darBajaActivo():
         if c == 1:
             break
         
-        activo = requests.get(f"http://localhost:5501/activos/{id}")
+        activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
         activo = activo.json()
         activoH = activo.get("historialActivos")
         activo["idEstado"] = "2"
@@ -500,7 +489,7 @@ def darBajaActivo():
         })
         
         activo["idEstado"] = "2"
-        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
         
         print("Activo dado de baja correctamente \n")
         input("   Presione ENTER para continuar...")
@@ -521,7 +510,7 @@ def reasignarActivo():
             except ValueError:
                 print("Solo valores enteros !")
         if id in str(data.ListID_Activos()):
-            peticion = requests.get(f"http://localhost:5501/activos/{id}")
+            peticion = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             info = [peticion.json()]
             result = []
             for val in info:
@@ -634,7 +623,7 @@ def reasignarActivo():
             "AsignadoA": AsignadoA
         })
         
-        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
         
         print("Asignacion Terminada \n")
         input("   Presione ENTER para continuar...")
@@ -648,7 +637,7 @@ def garantiaActivo():
     while True:
         id = input("   Ingrese ID del Activo al que desea enviar a garantia: ")
         if id in idsA:
-            activo = requests.get(f"http://localhost:5501/activos/{id}")
+            activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             activo = [activo.json()]
             result = []
             for val in activo:
@@ -693,7 +682,7 @@ def garantiaActivo():
         if c == 1:
             break
         
-        activo = requests.get(f"http://localhost:5501/activos/{id}")
+        activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
         activo = activo.json()
         activoH = activo.get("historialActivos")
         activo["idEstado"] = "3"
@@ -706,7 +695,7 @@ def garantiaActivo():
         })
         
         activo["idEstado"] = "2"
-        peticion = requests.put(f"http://localhost:5501/activos/{id}", json=activo)
+        peticion = requests.put(f"http://154.38.171.54:5502/activos/{id}", json=activo)
         
         print("Activo enviado a garantia correctamente \n")
         input("   Presione ENTER para continuar...")

@@ -17,7 +17,7 @@ def Activo():
     while True:
         id = input("   Ingrese ID del Activo al que desea eliminar: ")
         if id in idsA:
-            activo = requests.get(f"http://localhost:5501/activos/{id}")
+            activo = requests.get(f"http://154.38.171.54:5502/activos/{id}")
             activo = activo.json()
             estado = activo.get("idEstado")
             if estado == "2" or estado == "0":
@@ -73,7 +73,7 @@ def Activo():
         print(tabulate(result, headers=["Key", "Contenido"], tablefmt="github"))
         confirm = input("   Esta es la persona que desea eliminar? (Si/No): ")
         if confirm.lower() == "si" or confirm.lower() == "s":
-            peticion = requests.delete(f"http://localhost:5501/activos/{id}")
+            peticion = requests.delete(f"http://154.38.171.54:5502/activos/{id}")
             print("-Persona Eliminada")
         else:
             print("-Bien, operacion cancelada")
@@ -95,10 +95,10 @@ def Persona():
             else:
                 print("Este ID de Persona no existe !")
         
-        persona = requests.get(f"http://localhost:5501/personas/{id}")
+        persona = requests.get(f"http://154.38.171.54:5502/personas/{id}")
         persona = persona.json()
         
-        activos = requests.get(f"http://localhost:5501/activos")
+        activos = requests.get(f"http://154.38.171.54:5502/activos")
         activos = activos.json()
         
         for val in activos:
@@ -134,7 +134,7 @@ def Persona():
     print(tabulate(result, headers=["Key", "Contenido"], tablefmt="github"))
     confirm = input("   Esta es la persona que desea eliminar? (Si/No): ")
     if confirm.lower() == "si" or confirm.lower() == "s":
-        peticion = requests.delete(f"http://localhost:5501/personas/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5502/personas/{id}")
         print("-Persona Eliminada")
     else:
         print("-Bien, operacion cancelada")
@@ -155,10 +155,10 @@ def Zona():
             else:
                 print("Este ID de Zona no existe !")
         
-        zona = requests.get(f"http://localhost:5501/zonas/{id}")
+        zona = requests.get(f"http://154.38.171.54:5502/zonas/{id}")
         zona = zona.json()
         
-        activos = requests.get(f"http://localhost:5501/activos")
+        activos = requests.get(f"http://154.38.171.54:5502/activos")
         activos = activos.json()
         
         for val in activos:
@@ -194,7 +194,7 @@ def Zona():
     print(tabulate(result, headers=["Key", "Contenido"], tablefmt="github"))
     confirm = input("   Esta es la Zona que desea eliminar? (Si/No): ")
     if confirm.lower() == "si" or confirm.lower() == "s":
-        peticion = requests.delete(f"http://localhost:5501/personas/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5502/personas/{id}")
         print("-Zona Eliminada")
     else:
         print("-Bien, operacion cancelada")
