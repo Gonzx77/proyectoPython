@@ -133,8 +133,13 @@ def getHistorialActivo():
     activoH = activo.get("historialActivos")
     
     result = []
-    for item in activoH:
-        result.extend([[key, value] for key, value in item.items()])
+    for val in activoH:
+        result.append([
+            val.get("NroId"),
+            val.get("Fecha"),
+            val.get("tipoMov"),
+            val.get("idRespMov")
+        ])
     
     print(tabulate(result, headers=["NroId", "Fecha", "ID Tipo Movimiento", "ID Responsable"], tablefmt="github"))
     input("   Presione ENTER para continuar...")
