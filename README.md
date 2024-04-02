@@ -10,5 +10,5 @@ Librerias requeridas:
 - Json
 - Re
 
-Este programa usa la libreria json-server.py para hostear la data con el uso de un puerto local (5501), la data se encuentra en: storage/database.json
-comando usado: "json-server storage/database.json -b 5501"
+Este programa usa una base de datos hosteada con json-server 24/7
+URL: http://154.38.171.54:5502
