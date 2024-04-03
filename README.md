@@ -1,4 +1,5 @@
 Programa de gestion de Activos Campuslands "Sistema G&C Campuslands"
+El programa fue creado con el lenguaje de programacion Python
 
 Librerias requeridas:
 (el comando para instalar las librerias es: pip install {nombre libreria})
