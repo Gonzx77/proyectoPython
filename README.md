@@ -13,6 +13,8 @@ Librerias requeridas:
 Este programa usa una base de datos hosteada con json-server 24/7
 URL: http://154.38.171.54:5502
 
+¡ IMPORTANTE !: en caso de que la base de datos este caida, o esta no funcione correctamente, puede copiar y pegar el comando ubicado en la linea 9 de main.py, esto subira los datos de manera local, (unicamente debera cambiar la IP por http://localhost en todos los modulos que lo requieran).
+
 Funciones del sistema:
 El sistema funciona mediante una interfaz basica, las opciones que puedes encontrar son:
 
